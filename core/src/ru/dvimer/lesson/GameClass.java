@@ -6,8 +6,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import ru.dvimer.lesson.Figurs.Figure;
-import ru.dvimer.lesson.Figurs.Rook;
+import ru.dvimer.lesson.Figurs.*;
 
 public class GameClass extends ApplicationAdapter {
     SpriteBatch batch;
@@ -17,7 +16,7 @@ public class GameClass extends ApplicationAdapter {
 
 
 
-    Figure[] white = new Figure[8];
+    Figure[] white = new Figure[6];
 
 
     int mouseX;
@@ -35,10 +34,17 @@ public class GameClass extends ApplicationAdapter {
         pole = new Texture("pole.png");
         smile = new Texture("smile.png");
         smileEnd = new Texture("smileEnd.png");
+//
+//        for (int i = 0; i < 8; i++) {
+//            white[i] = new Queen(i, 0);
+//        }
 
-        for (int i = 0; i < 8; i++) {
-            white[i] = new Rook(i, 0);
-        }
+        white[0] = new King(1,0);
+        white[1] = new Queen(2,0);
+        white[2] = new Rook(3,0);
+        white[3] = new Knight(4,0);
+        white[4] = new Bishop(5,0);
+        white[5] = new Pawn(6,0);
     }
 
     @Override
@@ -56,18 +62,17 @@ public class GameClass extends ApplicationAdapter {
                 }
             }
         }
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < white.length; i++) {
             if (i == selectIndex) continue;
             batch.draw(smile, white[i].getX() * 60, white[i].getY() * 60);
         }
 
         if (selectIndex > -1) {
-            //batch.draw(smileEnd, white[selectIndex].getX() * 60, white[selectIndex].getY() * 60);
+            batch.draw(smileEnd, white[selectIndex].getX() * 60, white[selectIndex].getY() * 60);
             batch.draw(smile, mouseX - 30, mouseY - 30);
         }
         batch.end();
     }
-
 
     public void update() {
         mouseX = Gdx.input.getX();
@@ -78,7 +83,7 @@ public class GameClass extends ApplicationAdapter {
 
 
         if (selectIndex == -1) {
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < white.length; i++) {
                 if (white[i].getX() == mouseCellX && white[i].getY() == mouseCellY && Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
                     selectIndex = i;
                     break;

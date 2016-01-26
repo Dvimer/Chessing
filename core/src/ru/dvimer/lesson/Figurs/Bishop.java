@@ -1,27 +1,26 @@
+
 package ru.dvimer.lesson.Figurs;
 
 /**
  * Created by Алексей on 23.01.2016.
  */
-public class Slon extends Figure {
+public class Bishop extends Figure {
 
-
-    public Slon(int x, int y) {
+    public Bishop(int x, int y) {
         super(x, y);
-
     }
 
 
     @Override
+
     public boolean setPosition(int x, int y) {
-        if (Math.abs(y-this.y) <= 8&& x - this.x == 0|| y-this.y == 0&& Math.abs(x - this.x) <=8 ){
+        if (y - this.y == x - this.x || -(y - this.y) == (x - this.x)) {
             this.y = y;
             this.x = x;
             return true;
         }
         return false;
     }
-
 
 
 }

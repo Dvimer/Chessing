@@ -3,9 +3,9 @@ package ru.dvimer.lesson.Figurs;
 /**
  * Created by Алексей on 23.01.2016.
  */
-public class Horse extends Figure {
+public class Knight extends Figure {
 
-    public Horse(int x, int y) {
+    public Knight(int x, int y) {
         super(x, y);
     }
 
