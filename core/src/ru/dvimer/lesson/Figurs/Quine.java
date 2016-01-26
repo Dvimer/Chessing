@@ -3,16 +3,16 @@ package ru.dvimer.lesson.Figurs;
 /**
  * Created by Алексей on 23.01.2016.
  */
-public class Horse extends Figure {
+public class Quine extends Figure {
 
-    public Horse(int x, int y) {
+    public Quine(int x, int y) {
         super(x, y);
     }
 
 
     @Override
     public boolean setPosition(int x, int y) {
-        if (Math.abs(y-this.y) == 2&& Math.abs(x - this.x) == 1|| Math.abs(y-this.y) == 1&& Math.abs(x - this.x) == 2){
+        if (Math.abs(y-this.y) <=8&& x - this.x == 0|| y-this.y == 0&& Math.abs(x - this.x) <=8 ||y - this.y == x - this.x || -(y - this.y) == (x - this.x) ){
             this.y = y;
             this.x = x;
             return true;

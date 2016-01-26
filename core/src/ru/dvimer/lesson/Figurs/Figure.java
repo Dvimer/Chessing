@@ -1,12 +1,13 @@
 package ru.dvimer.lesson.Figurs;
 
+import java.util.ArrayList;
+
 /**
  * Created by Алексей on 23.01.2016.
  */
 public abstract class Figure {
     protected int x;
     protected int y;
-
 
 
     public Figure() {
@@ -16,7 +17,6 @@ public abstract class Figure {
         this.x = x;
         this.y = y;
     }
-
 
 
     public int getX() {
@@ -35,7 +35,6 @@ public abstract class Figure {
         this.y = y;
     }
 
-
 //    public void setPosition(int x, int y) {
 //        if (y - this.y == 1 && x-this.x == 1) {
 //            this.y = y++;
@@ -45,8 +44,6 @@ public abstract class Figure {
 //
 
 
-
-
-    public abstract void setPosition(int x, int y);
+    public abstract boolean setPosition(int x, int y);
 
 }
