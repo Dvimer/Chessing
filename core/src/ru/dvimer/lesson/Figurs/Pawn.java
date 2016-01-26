@@ -11,13 +11,19 @@ public class Pawn extends Figure {
 
 
     @Override
-    public boolean setPosition(int x, int y) {
-        if (y - this.y == 1 && x - this.x == 0 || y - this.y == 2 && x - this.x == 0 && this.y < 1) {
-
-            this.y = y;
+    public boolean proverka(int x, int y) {
+        if (y - this.y == 1 && x - this.x == 0 || y - this.y == 2 && x - this.x == 0 && this.y < 1){
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void setPosition(int x, int y) {
+        if (y - this.y == 1 && x - this.x == 0 || y - this.y == 2 && x - this.x == 0 && this.y < 1) {
+
+            this.y = y;
+        }
     }
 
 

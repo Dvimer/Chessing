@@ -13,6 +13,7 @@ public class GameClass extends ApplicationAdapter {
     Texture pole;
     Texture smile;
     Texture smileEnd;
+    Texture lightField;
 
 
 
@@ -34,6 +35,7 @@ public class GameClass extends ApplicationAdapter {
         pole = new Texture("pole.png");
         smile = new Texture("smile.png");
         smileEnd = new Texture("smileEnd.png");
+        lightField = new Texture("allocation.png");
 //
 //        for (int i = 0; i < 8; i++) {
 //            white[i] = new Queen(i, 0);
@@ -68,6 +70,9 @@ public class GameClass extends ApplicationAdapter {
         }
 
         if (selectIndex > -1) {
+            for (int i = 0; i < white[selectIndex].getKeyX().size() ; i++) {
+                batch.draw(lightField, white[selectIndex].getKeyX().get(i) * 60, white[selectIndex].getKeyY().get(i)* 60);
+            }
             batch.draw(smileEnd, white[selectIndex].getX() * 60, white[selectIndex].getY() * 60);
             batch.draw(smile, mouseX - 30, mouseY - 30);
         }
@@ -85,6 +90,7 @@ public class GameClass extends ApplicationAdapter {
         if (selectIndex == -1) {
             for (int i = 0; i < white.length; i++) {
                 if (white[i].getX() == mouseCellX && white[i].getY() == mouseCellY && Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+                    white[i].light();
                     selectIndex = i;
                     break;
                 }
@@ -93,6 +99,7 @@ public class GameClass extends ApplicationAdapter {
 
         if (!Gdx.input.isButtonPressed(Input.Buttons.LEFT) && selectIndex > -1) {
             white[selectIndex].setPosition(mouseCellX, mouseCellY);
+            white[selectIndex].resetLight();
             selectIndex = -1;
         }
     }
